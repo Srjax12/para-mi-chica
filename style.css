@@ -1,0 +1,812 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffde8 0%,
+            #fff6c2 42%,
+            #f1dc88 100%
+        );
+
+    color: #725900;
+}
+
+
+/* =========================
+   FONDO
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.glow {
+    position: absolute;
+
+    width: min(90vw, 700px);
+    height: min(90vw, 700px);
+
+    left: 50%;
+    top: 58%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 239, 90, .38),
+            rgba(255, 224, 80, .12),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+}
+
+
+/* =========================
+   BRILLOS
+========================= */
+
+.sparkle {
+    position: absolute;
+
+    color: #d9ae20;
+
+    font-size: 18px;
+
+    opacity: 0;
+
+    animation: sparkle 4s infinite;
+}
+
+.s1 {
+    left: 15%;
+    top: 30%;
+    animation-delay: 2s;
+}
+
+.s2 {
+    left: 83%;
+    top: 32%;
+    animation-delay: 3s;
+}
+
+.s3 {
+    left: 8%;
+    top: 65%;
+    animation-delay: 4s;
+}
+
+.s4 {
+    left: 90%;
+    top: 63%;
+    animation-delay: 4.8s;
+}
+
+.s5 {
+    left: 25%;
+    top: 78%;
+    animation-delay: 5.5s;
+}
+
+.s6 {
+    left: 75%;
+    top: 76%;
+    animation-delay: 6s;
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+main {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    position: absolute;
+
+    top: 7%;
+
+    width: min(90%, 650px);
+
+    text-align: center;
+
+    z-index: 10;
+
+    animation: introIn 2s ease forwards;
+}
+
+.small-text {
+    font-size: 15px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #a4882b;
+
+    margin-bottom: 12px;
+
+    opacity: .8;
+}
+
+.intro h1 {
+    font-size: clamp(48px, 11vw, 82px);
+
+    font-weight: normal;
+
+    letter-spacing: 7px;
+
+    color: #806400;
+
+    text-shadow:
+        0 3px 15px
+        rgba(175, 135, 0, .15);
+}
+
+.line {
+    width: 70px;
+    height: 1px;
+
+    margin: 15px auto;
+
+    background: #cba82e;
+}
+
+.intro p {
+    max-width: 470px;
+
+    margin: auto;
+
+    padding: 0 15px;
+
+    font-size: clamp(16px, 3.5vw, 20px);
+
+    line-height: 1.6;
+
+    color: #92782a;
+}
+
+
+/* =========================
+   FLOR
+========================= */
+
+.flower-container {
+    position: absolute;
+
+    width: 100%;
+    height: 55%;
+
+    left: 0;
+    top: 27%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 5;
+}
+
+
+/* CONTENEDOR REAL DE LA FLOR */
+
+.flower {
+    position: relative;
+
+    width: 280px;
+    height: 440px;
+
+    margin-top: 40px;
+
+    animation: flowerSway 5s ease-in-out infinite 4s;
+}
+
+
+/* =========================
+   TALLO
+========================= */
+
+.stem {
+    position: absolute;
+
+    width: 13px;
+    height: 285px;
+
+    left: 50%;
+    bottom: 0;
+
+    transform:
+        translateX(-50%)
+        scaleY(0);
+
+    transform-origin: bottom;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #347c34,
+            #78b84b,
+            #347c34
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(60, 130, 50, .3);
+
+    animation:
+        growStem 2s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* =========================
+   CABEZA
+========================= */
+
+.flower-head {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    left: 50%;
+    top: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    animation:
+        bloom 1.7s
+        cubic-bezier(.17,.89,.32,1.28)
+        forwards 1.8s;
+}
+
+
+/* =========================
+   PÉTALOS
+========================= */
+
+
+/* =========================
+   PÉTALOS CENTRADOS
+========================= */
+
+.petal {
+    position: absolute;
+
+    width: 72px;
+    height: 112px;
+
+    /*
+        El centro de la flor es:
+        115px, 115px
+
+
+        El pétalo se coloca exactamente
+        alrededor de ese punto.
+    */
+
+    left: 79px;
+    top: 3px;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff94c,
+            #ffd000
+        );
+
+    /*
+        Este punto es el centro desde
+        donde gira cada pétalo.
+    */
+    transform-origin: 36px 112px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(190, 140, 0, .22);
+}
+
+
+/* PÉTALO 1 */
+
+.petal:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+
+/* PÉTALO 2 */
+
+.petal:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+
+/* PÉTALO 3 */
+
+.petal:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+
+/* PÉTALO 4 */
+
+.petal:nth-child(4) {
+    transform: rotate(135deg);
+}
+
+
+/* PÉTALO 5 */
+
+.petal:nth-child(5) {
+    transform: rotate(180deg);
+}
+
+
+/* PÉTALO 6 */
+
+.petal:nth-child(6) {
+    transform: rotate(225deg);
+}
+
+
+/* PÉTALO 7 */
+
+.petal:nth-child(7) {
+    transform: rotate(270deg);
+}
+
+
+/* PÉTALO 8 */
+
+.petal:nth-child(8) {
+    transform: rotate(315deg);
+}
+
+
+/* =========================
+   CENTRO EXACTO
+========================= */
+
+.flower-center {
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    /*
+        230 / 2 = 115
+        70 / 2 = 35
+
+        115 - 35 = 80
+    */
+
+    left: 80px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe878,
+            #d79700
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(210, 150, 0, .45);
+}
+
+.flower-center::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            #9e6800 1.5px,
+            transparent 1.5px
+        );
+
+    background-size: 9px 9px;
+}
+
+
+/* =========================
+   CENTRO
+========================= */
+
+.flower-center {
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    left: 80px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    z-index: 5;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe878,
+            #d79700
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(210, 150, 0, .45);
+}
+
+.flower-center::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            #9e6800 1.5px,
+            transparent 1.5px
+        );
+
+    background-size: 9px 9px;
+}
+
+
+/* =========================
+   HOJAS
+========================= */
+
+.leaf {
+    position: absolute;
+
+    width: 95px;
+    height: 43px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7cbd50,
+            #3c8739
+        );
+
+    border-radius:
+        100% 0 100% 0;
+
+    opacity: 0;
+}
+
+.leaf-left {
+    left: 42px;
+    bottom: 125px;
+
+    transform:
+        rotate(-28deg)
+        scale(0);
+
+    animation:
+        leafIn .8s
+        ease forwards 2.1s;
+}
+
+.leaf-right {
+    right: 38px;
+    bottom: 185px;
+
+    transform:
+        rotate(28deg)
+        scale(0)
+        scaleX(-1);
+
+    animation:
+        leafIn .8s
+        ease forwards 2.4s;
+}
+
+
+/* =========================
+   MENSAJE FINAL
+========================= */
+
+.final-message {
+    position: absolute;
+
+    bottom: 5%;
+
+    width: min(90%, 600px);
+
+    text-align: center;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    animation:
+        messageIn 2s
+        ease forwards 4.5s;
+}
+
+.final-message p {
+    font-size: clamp(16px, 3.5vw, 21px);
+
+    line-height: 1.6;
+
+    color: #806a27;
+}
+
+.heart {
+    margin-top: 7px;
+
+    font-size: 30px;
+
+    color: #d1a500;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes introIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes growStem {
+
+    from {
+        transform:
+            translateX(-50%)
+            scaleY(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scaleY(1);
+    }
+}
+
+
+@keyframes bloom {
+
+    0% {
+        transform:
+            translateX(-50%)
+            scale(0)
+            rotate(-20deg);
+    }
+
+    70% {
+        transform:
+            translateX(-50%)
+            scale(1.08)
+            rotate(4deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes leafIn {
+
+    to {
+        opacity: 1;
+
+        transform:
+            rotate(-28deg)
+            scale(1);
+    }
+}
+
+
+@keyframes flowerSway {
+
+    0%,
+    100% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(1deg);
+    }
+}
+
+
+@keyframes messageIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+@keyframes sparkle {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.5);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .7;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-70px)
+            scale(1.2);
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .intro {
+        top: 6%;
+    }
+
+    .intro h1 {
+        letter-spacing: 5px;
+    }
+
+    .flower-container {
+        top: 28%;
+        height: 53%;
+    }
+
+    .flower {
+        transform: scale(.78);
+        transform-origin: center center;
+    }
+
+    .final-message {
+        bottom: 4%;
+    }
+}
+
+
+@media (max-height: 700px) {
+
+    .intro {
+        top: 3%;
+    }
+
+    .flower-container {
+        top: 25%;
+    }
+
+    .flower {
+        transform: scale(.65);
+    }
+
+    .final-message {
+        bottom: 2%;
+    }
+}
+
